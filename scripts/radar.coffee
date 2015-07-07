@@ -16,7 +16,7 @@ get_radar = (msg, robot) ->
     loc = robot.brain.data[user + "-location"]
     if loc == ""
       msg.send "Sorry " + nick + ", I don't know where you live."
-    location = loc.split(',')[1].trim() + '/' + loc.split(',')[0].trim()
+    location = encodeURI(loc.split(',')[1].trim() + '/' + loc.split(',')[0].trim())
   else if msg.match[1].match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)
     location = msg.match[1]
   else
